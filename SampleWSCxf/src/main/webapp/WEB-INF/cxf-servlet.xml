@@ -1,0 +1,31 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd
+http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+
+
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-http.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+
+	<jaxws:endpoint id="sampleService" implementor="com.sample.service.impl.SampleWebServiceImpl" address="/SampleService"/>
+		
+		<bean id="sampleserviceclass" class="com.sample.service.impl.SampleWebServiceImpl"/>
+		
+	 <jaxrs:server id="sampleRestService" address="/sampleRestService">
+        <jaxrs:serviceBeans>
+        <ref bean="sampleserviceclass" />
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+        <ref bean="jsonProvider"/>
+        </jaxrs:providers>
+    </jaxrs:server>	
+    
+   
+   <bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider"/>
+
+</beans>

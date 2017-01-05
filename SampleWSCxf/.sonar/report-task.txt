@@ -1,0 +1,5 @@
+projectKey=eh:Digite_Demo
+serverUrl=http://localhost:9000
+dashboardUrl=http://localhost:9000/dashboard/index/eh:Digite_Demo
+ceTaskId=AVi5L_-D_OsWwMbxkXEK
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AVi5L_-D_OsWwMbxkXEK
